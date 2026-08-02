@@ -1,0 +1,17 @@
+venue_id,venue_name,city,country,capacity,region
+1,Estadio Azteca,Mexico City,Mexico,87523,Central
+2,Estadio BBVA,Monterrey,Mexico,53500,Central
+3,Estadio Akron,Guadalajara,Mexico,48071,Central
+4,BMO Field,Toronto,Canada,30000,East
+5,BC Place,Vancouver,Canada,54500,West
+6,MetLife Stadium,New York/New Jersey,USA,82500,East
+7,SoFi Stadium,Los Angeles,USA,70240,West
+8,AT&T Stadium,Dallas,USA,92967,Central
+9,Mercedes-Benz Stadium,Atlanta,USA,71000,East
+10,Hard Rock Stadium,Miami,USA,64767,East
+11,NRG Stadium,Houston,USA,72220,Central
+12,Lumen Field,Seattle,USA,69000,West
+13,Lincoln Financial Field,Philadelphia,USA,69796,East
+14,Levi's Stadium,San Francisco Bay Area,USA,70000,West
+15,Gillette Stadium,Boston,USA,65878,East
+16,Arrowhead Stadium,Kansas City,USA,76416,Central
