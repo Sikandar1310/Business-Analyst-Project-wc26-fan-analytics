@@ -1,0 +1,16 @@
+# Gap Analysis
+
+**Project:** Stadium Entry & Security Process Improvement
+**Purpose:** Identify what the AS-IS process is missing in order to address the evidenced root causes documented in `BRD.md`, Section 4 (Root Cause Analysis). A summary of this document also appears in `BRD.md`, Section 5.
+
+Each gap below is tied directly to a root cause — no new causes are introduced here. Cause 3 (SEAR-1/Presidential security escalation) deliberately produces **no gap entry**: it's non-repeatable by definition, and building standing process capability around an exceptional event would misallocate effort against the evidence tiering established in the BRD.
+
+| # | AS-IS Capability (what the process does today) | Linked Root Cause | Gap | Required TO-BE Capability | Priority |
+|---|---|---|---|---|---|
+| G1 | Every fan is fully re-screened at both the outer perimeter checkpoint and the turnstile — no credential carries over between the two | Cause 1 — Risk-transfer design flaw (repeatable, in-venue control) | No mechanism preserves "cleared" status between checkpoints, so the doubled-checkpoint design doubles processing time for every fan regardless of how recently they were screened | Credentialed fast-track: outer-perimeter clearance issues a verifiable marker (wristband/badge/QR) that shortens the turnstile check for already-cleared fans | High — addresses the confirmed, repeatable cause that's actually within the venue's control to fix |
+| G2 | Rail arrivals are paced by NJ Transit's 40,000/matchday cap and train schedule; non-rail arrivals (bus/rideshare, the other ~40,000+) have no equivalent pacing | Cause 2 — Transit infrastructure constraint (repeatable, physical, not directly fixable) | The half of attendees not on the rail cap arrive in one uncontrolled, concentrated wave right before kickoff, with nothing smoothing that curve | Timed-entry ticketing or staggered gate-opening by section, specifically for the non-rail segment, to flatten the arrival curve the rail cap doesn't touch | High — can't fix the physical rail constraint, but arrival pacing for the uncapped half is a real lever |
+| G3 | Venue Ops monitors queue/crowd flow per match, per gate, in isolation — no comparison against that venue's own historical baseline | Houston anomaly — no confirmed cause; this is a detection gap, not a fix for an unknown root cause | No real-time flag exists for a match's wait time/satisfaction diverging sharply from venue norms — match_id=7's anomaly was only found via retroactive portfolio-level analysis, not caught operationally | Real-time threshold alerting on wait time / entry score / satisfaction vs. venue baseline, enabling in-match intervention instead of post-hoc discovery | Medium — doesn't explain what happened at Houston, but shortens time-to-detection for the next unexplained spike |
+
+## Cross-Project Consistency Check
+
+G3 independently arrives at the same capability Project 1's BRD already recommended for the FIFA 2030 platform (FR-03: monitor wait time, entry experience, and satisfaction per venue, with configurable threshold alerts). Two separate analyses converging on the same requirement is a reasonable signal that it's a real gap, not an artifact of how either project was framed.
