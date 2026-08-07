@@ -11,8 +11,8 @@
 | AS-IS Process Map | ✅ Complete |
 | Root Cause Analysis | ✅ Complete (MetLife/Match 104) — Houston has no confirmed root cause; documented as an unexplained data anomaly (see below) |
 | Gap Analysis | ✅ Complete — summary below, full detail in `Gap_Analysis.md` |
-| TO-BE Process Map | ⬜ Not started |
-| Risk Register | ⬜ Not started — will live in `Risk_Register.md` once complete |
+| TO-BE Process Map | ✅ Complete — `Process-Maps/TO-BE_Process_Map.drawio` |
+| Risk Register | ✅ Complete — summary below, full detail in `Risk_Register.md` |
 
 This document will be updated as later phases are completed. It is **not** a finished deliverable yet.
 
@@ -57,11 +57,27 @@ Three gaps identified, each tied directly to a root cause from Section 4 — no 
 
 Cause 3 (SEAR-1/Presidential security escalation) deliberately produces **no gap entry** — it's non-repeatable by definition, and building standing capability around an exceptional event would contradict the evidence tiering already established in Section 4.
 
-## 6. Risk Register (Summary)
+## 6. TO-BE Process Map (Summary)
 
-*Pending.* This section, and the full `Risk_Register.md`, will be completed once the Risk Register phase is done.
+Three decision points are added to the AS-IS flow, one per gap, each colored and traceable back to its source gap:
 
-## 7. Sources
+- **G2 diamond (Ticketing/Entry):** "Non-rail arrival?" — routes non-rail fans into a timed-entry/staggered-gate assignment before ticket scan; rail arrivals pass through unchanged since the 40k cap already paces them.
+- **G1 diamond (Security Screening):** "Credential present?" — a fan who received an outer-perimeter clearance credential gets a light-touch fast-track re-check; everyone else gets the full existing screening. Nothing is removed from the AS-IS baseline — the full-screen path is preserved as-is for anyone without a credential.
+- **G3 diamond (Venue Operations):** "Wait time > 20 min vs. venue baseline?" — Yes triggers an overflow-lane/staff-redeploy alert; No continues normal monitoring. The 20-minute figure is a placeholder threshold for illustration — Risk Register R3 flags that it needs per-venue calibration before real use, not a fixed tournament-wide number.
+
+Full diagram: `Process-Maps/TO-BE_Process_Map.drawio`.
+
+## 7. Risk Register (Summary)
+
+Six risks identified — three tied to implementing the TO-BE fixes (R1–R3), and three documenting boundary conditions that were deliberately *not* solved (R4–R6), consistent with the evidence tiering in Section 4. Full detail, including likelihood/impact ratings and mitigation owners, is in `Risk_Register.md`.
+
+- **R1 (Medium/High):** Credential spoofing at the G1 fast-track lane could reintroduce the exact breach risk the doubled-checkpoint design exists to prevent.
+- **R2 (Medium/Medium):** G2's timed-entry windows may just relocate the bottleneck to bus/rideshare drop-off points — a scoping gap this analysis didn't originally cover, flagged rather than hidden.
+- **R3 (Medium/Low):** G3's alert threshold needs per-venue calibration or it will false-positive on ordinary high-attendance matches.
+- **R4, R6:** The NJ Transit rail cap and SEAR-1-style exceptional security escalations are documented as permanent/out-of-scope boundary conditions, not risks to be mitigated.
+- **R5:** Houston's root cause is still unconfirmed — G3 only catches the *symptom* (anomalous wait time), so a future incident with a different underlying cause may not be caught by this fix alone.
+
+## 8. Sources
 
 - Axios — Hard Rock Stadium 2026 security redesign, Miami-Dade Sheriff's Office: https://www.axios.com/local/miami/2025/06/04/world-cup-hard-rock-security-copa-america
 - CNN — Copa América 2024 federal class action lawsuit: https://www.cnn.com/2024/07/20/sport/copa-america-finals-match-lawsuit-ticketed-fans/index.html

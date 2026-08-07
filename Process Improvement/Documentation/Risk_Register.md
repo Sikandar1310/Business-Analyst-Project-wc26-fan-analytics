@@ -1,0 +1,18 @@
+# Risk Register
+
+**Project:** Stadium Entry & Security Process Improvement
+**Purpose:** Track implementation and residual risk for the TO-BE process. A summary of this document also appears in `BRD.md`, Section 6. Each risk is traced to a specific gap (`Gap_Analysis.md`) or root cause (`BRD.md`, Section 4) — no speculative risks are added beyond what the evidence supports.
+
+| ID | Risk | Linked Gap/Cause | Likelihood | Impact | Mitigation | Owner (role) |
+|---|---|---|---|---|---|---|
+| R1 | Credential system (wristband/QR) can be spoofed or duplicated, letting an unscreened fan claim fast-track status | G1 fix | Medium | High — reintroduces the exact breach risk the doubled-checkpoint design was built to prevent | Use single-use, time-stamped, cryptographically signed credentials tied to the original outer-perimeter scan; spot-audit fast-track lane at a fixed sampling rate | Security Operations Lead |
+| R2 | Timed-entry windows for non-rail arrivals reduce peak load but may shift bottleneck to bus/rideshare drop-off points instead of gates | G2 fix | Medium | Medium — moves the problem rather than solving it if drop-off capacity isn't separately assessed | Model bus/rideshare drop-off throughput before finalizing timed windows; this is a scoping gap in the current analysis, not yet resolved | Venue Operations / Transit Coordination |
+| R3 | Real-time alerting (G3) generates false positives during normal high-attendance matches, causing unnecessary overflow-lane activation and staff strain | G3 fix | Medium | Low — costs staffing efficiency, doesn't reintroduce the original failure | Calibrate the 20-min threshold against each venue's own historical baseline (not a fixed tournament-wide number) before go-live; review after first live use | Venue Operations |
+| R4 | NJ Transit's 40,000 rail cap (Cause 2) is a hard external constraint — no process fix removes it, only works around it | Cause 2 | High (certain, by design) | Medium — accepted constraint, not a defect | None — explicitly out of scope for process redesign; documented as a permanent boundary condition | N/A (infrastructure, external to venue) |
+| R5 | Houston's underlying cause remains unconfirmed (G3 is a detection fix, not a diagnosis) — a future anomaly with a different root cause may not be caught by wait-time alerting alone | Houston anomaly (unresolved) | Low–Medium (unknown) | Medium — G3 catches *symptoms* of a broad class of failures, not every possible cause | Treat G3 as a detection layer, not a complete fix; re-open root cause investigation if a future anomaly repeats the same signature | Venue Operations / BA follow-up |
+| R6 | SEAR-1-style exceptional security escalations (Cause 3) will recur for future high-profile attendees and are explicitly excluded from this redesign's baseline | Cause 3 | Medium (event-dependent) | High, when it occurs | No standing process fix by design (see BRD Section 4); recommend a separate, explicitly-labeled "VIP/elevated security" contingency runbook, out of scope here | Event Security / Federal Liaison |
+
+## Notes
+
+- R2 surfaces a real scoping limitation in this project: drop-off point capacity was never analyzed as part of Gap Analysis, since it wasn't part of the evidenced root causes. It's flagged here rather than silently left out.
+- R4 and R6 are intentionally *not* "risks to mitigate" in the usual sense — they're documented boundary conditions, consistent with the evidence tiering established throughout this project. Including them here (rather than omitting them) keeps the register honest about what this redesign can and cannot fix.
