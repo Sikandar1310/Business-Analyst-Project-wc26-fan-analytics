@@ -1,4 +1,8 @@
-SELECT match_date,stage,venue_name,city
-FROM matches
-JOIN venues ON matches.venue_id=venues.venue_id
-WHERE venue_name = 'MetLife Stadium';
+SELECT
+    m.match_date,
+    m.stage,
+    v.venue_name,
+    v.city
+FROM matches m
+JOIN venues v ON m.venue_id = v.venue_id
+WHERE v.venue_name = 'MetLife Stadium';

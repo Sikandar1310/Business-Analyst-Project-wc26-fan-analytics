@@ -35,6 +35,8 @@ This project uses a **hybrid dataset**: real tournament structure combined with 
 - No transit-access or transportation data was available — flagged as a data gap and a functional requirement for future collection, not analysed
 - Channel and ticket price tier were generated as independent variables, so channel-level pricing patterns (e.g. hospitality pricing at a premium) don't reflect real-world pricing structures
 - Knockout-stage match scheduling was simplified for this portfolio dataset
+- Ticket sales are a sample (~90K tickets, ~$17.3M) rather than a full ledger, so they don't reconcile to total attendance (~7.04M); revenue figures are used for relative comparisons (e.g. channel share), not as tournament-scale totals
+- The Third Place Playoff is recorded as a 1-1 draw with no penalty-shootout field in the schema
 
 Full detail on scope and assumptions is in the [Phase 1 BRD](Documentation/BRD.md).
 
@@ -112,7 +114,7 @@ Two real incidents anchor this analysis, tiered explicitly by source reliability
 - **MetLife Stadium (the actual Final):** well-corroborated across multiple independent outlets — 2-4 hour entry delays, driven by a doubled security-checkpoint design and a transit-capacity constraint.
 - **Houston (NRG Stadium):** two separate facts, not one incident — a real, reported bottleneck at the actual Houston opener (social-media-sourced, not venue-confirmed), documented separately from an unexplained wait-time anomaly in this project's synthetic data. No causal link is claimed between the two.
 
-Full sourcing, including verified citations (an actual $14M federal settlement from a related 2024 incident, and an on-record quote from NJ's governor ordering the security review that shaped MetLife's design) is in the [Phase 2 BRD](Process-Improvement/BRD.md).
+Full sourcing, including verified citations (an actual $14M federal settlement from a related 2024 incident, and an on-record quote from NJ's governor ordering the security review that shaped MetLife's design) is in the [Phase 2 BRD](<Process Improvement/Documentation/BRD.md>).
 
 ## Root Cause Analysis
 
@@ -132,7 +134,7 @@ Built as swimlane diagrams (draw.io) across four lanes — Fan, Ticketing/Entry,
 
 ## Risk Register
 
-Implementation risk was assessed for each fix, including risks the fixes themselves could introduce (e.g. a spoofable fast-track credential reintroducing the original breach risk it was designed to prevent) and honest documentation of what remains genuinely unresolved (Houston's underlying cause is still unconfirmed; the transit constraint is a permanent boundary condition, not something a process fix removes). Full register in [Process-Improvement/Risk_Register.md](Process-Improvement/Risk_Register.md).
+Implementation risk was assessed for each fix, including risks the fixes themselves could introduce (e.g. a spoofable fast-track credential reintroducing the original breach risk it was designed to prevent) and honest documentation of what remains genuinely unresolved (Houston's underlying cause is still unconfirmed; the transit constraint is a permanent boundary condition, not something a process fix removes). Full register in [Process Improvement/Documentation/Risk_Register.md](<Process Improvement/Documentation/Risk_Register.md>).
 
 ## Phase 2 Status
 
@@ -154,9 +156,9 @@ Implementation risk was assessed for each fix, including risks the fixes themsel
 📁 Data                    Phase 1 tournament datasets
 📁 SQL                     Phase 1 business-focused SQL analysis
 📁 Documentation           Phase 1: BRD, Traceability Matrix, Data Dictionary, Data Quality Assessment
-📁 Power.bi                Phase 1 interactive dashboard + screenshots
+📁 Power BI                Phase 1 interactive dashboard (WC26_Fan_Analytics.pbix) + screenshots
 📁 Jira                    Phase 1: Epic, User Stories, Sprint planning, process write-up
-📁 Process-Improvement     Phase 2: BRD, AS-IS/TO-BE process maps, Risk Register
+📁 Process Improvement     Phase 2: BRD, Gap Analysis, Risk Register, AS-IS/TO-BE process maps
 
 README.md
 ```

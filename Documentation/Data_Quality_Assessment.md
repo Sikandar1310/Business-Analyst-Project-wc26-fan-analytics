@@ -13,7 +13,7 @@
 | Uniqueness | Pass — all 5 primary keys 100% unique |
 | Referential Integrity | Pass — zero orphaned foreign keys across all relationships |
 | Validity | Pass — zero logically impossible values found |
-| Consistency | **2 known issues** — disclosed below, not hidden |
+| Consistency | **3 known issues** — disclosed below, not hidden |
 | Accuracy | **Mixed by design** — see note below |
 
 ---
@@ -58,11 +58,13 @@ Checked values against logical and real-world constraints:
 - `ticket_sales.quantity` and `unit_price_usd`: 100% positive, no zero or negative values
 - No match has a team playing itself (`team1_id ≠ team2_id`, verified)
 
-## 5. Consistency — 2 known issues, disclosed
+## 5. Consistency — 3 known issues, disclosed
 
 **Issue 1: Knockout-stage matches share a single date within each round.** Quantified directly: all 16 Round of 32 matches share exactly 1 date, all 8 Round of 16 matches share 1 date, and so on through the Final. Real tournaments spread knockout matches across several days; this dataset simplifies each round to a single date. Does not affect any finding in this analysis, since no finding depends on intra-round date variation.
 
 **Issue 2: `channel` and `price_tier` are statistically independent**, when in reality ticket channel and price tier would correlate (e.g. hospitality-channel tickets priced at a premium). Confirmed in the BRD's Assumptions section — average ticket price is nearly flat across all 4 channels (~$191–194) in this dataset, which would not hold in a real ticketing system.
+
+**Issue 3: `ticket_sales` is a sample, not a full ledger, so it does not reconcile to `matches.attendance`.** Quantified directly: `ticket_sales` sums to 89,951 tickets ($17.28M gross revenue) across all 104 matches, while `matches.attendance` sums to 7,042,397 — roughly a 1.3% ratio (e.g. match 1 has 84,342 attendance but 1,050 tickets in `ticket_sales`). Revenue and ticket-count figures are therefore valid for *relative* comparisons (channel share, stage mix, top buyer countries, the FIFA.com ~2.23× multiple) but are **not tournament-scale totals**, and should not be read alongside total attendance as if they describe the same population. Attendance-based findings (occupancy rate, demand tiers, venue rankings) use `matches.attendance` and are unaffected.
 
 ## 6. Accuracy — mixed by design, not a defect
 

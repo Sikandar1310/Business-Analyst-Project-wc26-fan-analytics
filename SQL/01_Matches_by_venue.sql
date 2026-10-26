@@ -1,3 +1,6 @@
-SELECT match_date, stage, venue_name
-FROM matches
-JOIN venues ON matches.venue_id = venues.venue_id;
+SELECT
+    m.match_date,
+    m.stage,
+    v.venue_name
+FROM matches m
+JOIN venues v ON m.venue_id = v.venue_id;
